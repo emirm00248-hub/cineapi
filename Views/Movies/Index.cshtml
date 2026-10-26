@@ -1,0 +1,52 @@
+@model CineAPI.Models.MovieSearchViewModel
+@{
+    ViewData["Title"] = "Buscar películas";
+}
+
+<div class="page-heading">
+    <span class="eyebrow">Catálogo cinematográfico</span>
+    <h1>Buscar películas</h1>
+    <p class="text-muted">Escribe un título para consultar resultados de TMDB.</p>
+</div>
+
+<form asp-action="Index" method="get" class="search-form mb-4" role="search">
+    <label class="visually-hidden" for="movie-query">Nombre de la película</label>
+    <input id="movie-query" name="query" value="@Model.Query" class="form-control form-control-lg" placeholder="Ejemplo: The Matrix" maxlength="100" required />
+    <button type="submit" class="btn btn-primary btn-lg">Buscar</button>
+</form>
+
+@if (!Model.HasSearched)
+{
+    <div class="empty-state"><h2>Empieza tu búsqueda</h2><p>Escribe el nombre de una película para comenzar.</p></div>
+}
+else if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <div class="alert alert-warning empty-state" role="alert">@Model.ErrorMessage</div>
+}
+else
+{
+    <p class="results-count">@Model.Movies.Count resultado(s) para <strong>@Model.Query</strong></p>
+    <div class="row g-4">
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                <article class="movie-card h-100">
+                    @if (movie.PosterUrl is not null)
+                    {
+                        <img src="@movie.PosterUrl" alt="Póster de @movie.Title" class="movie-poster" loading="lazy" />
+                    }
+                    else
+                    {
+                        <div class="movie-poster poster-placeholder">Sin póster</div>
+                    }
+                    <div class="movie-card-body">
+                        <h2>@movie.Title</h2>
+                        <p class="movie-meta">@movie.DisplayReleaseDate <span>•</span> ★ @movie.VoteAverage.ToString("0.0")</p>
+                        <p class="movie-overview">@movie.Overview</p>
+                        <a asp-action="Details" asp-route-id="@movie.Id" class="btn btn-outline-primary">Ver detalles</a>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+}

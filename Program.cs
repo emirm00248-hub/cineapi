@@ -1,7 +1,14 @@
+using CineAPI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpClient<ITmdbService, TmdbService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.themoviedb.org/3/");
+    client.Timeout = TimeSpan.FromSeconds(15);
+});
 
 var app = builder.Build();
 

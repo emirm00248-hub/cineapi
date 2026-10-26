@@ -6,9 +6,9 @@ namespace CineAPI.Controllers;
 
 public class HomeController : Controller
 {
-    public IActionResult Index()
+    public IActionResult Index(string? query)
     {
-        return View();
+        return View(new MovieSearchViewModel { Query = query?.Trim() ?? string.Empty });
     }
 
     public IActionResult Privacy()

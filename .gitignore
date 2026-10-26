@@ -1,0 +1,17 @@
+## .NET
+bin/
+obj/
+
+## User-specific files
+.vs/
+*.user
+*.suo
+
+## IDE
+.vscode/*
+!.vscode/settings.json
+
+## Local configuration and secrets
+appsettings.local.json
+*.secret.json
+

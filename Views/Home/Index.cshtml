@@ -1,8 +1,33 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@model CineAPI.Models.MovieSearchViewModel
+@{
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-panel text-center">
+    <span class="eyebrow">Descubre tu próxima película</span>
+    <h1 class="display-3 fw-bold">CineAPI</h1>
+    <p class="lead mx-auto">Busca películas, consulta sus detalles y encuentra nuevas historias para disfrutar.</p>
+    <form asp-controller="Movies" asp-action="Index" method="get" class="search-form mx-auto" role="search">
+        <label class="visually-hidden" for="home-query">Nombre de la película</label>
+        <input id="home-query" name="query" value="@Model.Query" class="form-control form-control-lg" placeholder="Ejemplo: Inception" maxlength="100" />
+        <button type="submit" class="btn btn-primary btn-lg">Buscar películas</button>
+    </form>
+</section>
+
+<section class="row g-4 mt-4">
+    <div class="col-md-4">
+        <a asp-controller="Movies" asp-action="Index" class="feature-card feature-link">
+            <span class="feature-icon">⌕</span><h2>Busca</h2><p>Encuentra títulos conocidos o descubre algo nuevo.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Movies" asp-action="Index" asp-route-query="Inception" class="feature-card feature-link">
+            <span class="feature-icon">★</span><h2>Compara</h2><p>Revisa puntuaciones, fechas y sinopsis en un solo lugar.</p>
+        </a>
+    </div>
+    <div class="col-md-4">
+        <a asp-controller="Movies" asp-action="Index" asp-route-query="Avatar" class="feature-card feature-link">
+            <span class="feature-icon">▶</span><h2>Explora</h2><p>Abre los detalles de cada película para conocerla mejor.</p>
+        </a>
+    </div>
+</section>
