@@ -10,10 +10,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("4ee03316-5c63-4f6d-9be7-c1b3462ae865")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("CineAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c61c3244eb2359c0f27ff247b3f78cdf05869970")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+461ec2b1b60a4d7af28f9881d3666b30ace9b3ce")]
 [assembly: System.Reflection.AssemblyProductAttribute("CineAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CineAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
