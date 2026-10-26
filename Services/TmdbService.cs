@@ -64,6 +64,13 @@ public sealed class TmdbService(
                 "El servicio de películas no está configurado. Añade el token de TMDB mediante User Secrets.");
         }
 
+        if (Uri.TryCreate(token, UriKind.Absolute, out _) ||
+            token.Contains("localhost", StringComparison.OrdinalIgnoreCase))
+        {
+            throw new TmdbServiceException(
+                "La configuración de TMDB no es válida. Usa el Read Access Token de TMDB, no una URL.");
+        }
+
         using var request = new HttpRequestMessage(HttpMethod.Get, relativeUrl);
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 

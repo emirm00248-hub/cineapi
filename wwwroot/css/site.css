@@ -36,6 +36,8 @@ body {
 .btn-primary:hover { background: #c94f35; border-color: #c94f35; }
 .feature-card, .movie-card, .empty-state { background: #1b2031; border: 1px solid #303751; border-radius: 1rem; padding: 1.5rem; }
 .feature-card { height: 100%; }
+.feature-link { color: inherit; display: block; text-decoration: none; transition: border-color .2s, transform .2s; }
+.feature-link:hover { border-color: #f6c453; color: inherit; transform: translateY(-3px); }
 .feature-icon { color: #f6c453; font-size: 2rem; }
 .feature-card h2 { font-size: 1.2rem; margin-top: .75rem; }
 .feature-card p, .movie-overview { color: #b6b9cb; }

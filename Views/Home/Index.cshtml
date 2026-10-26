@@ -16,13 +16,18 @@
 
 <section class="row g-4 mt-4">
     <div class="col-md-4">
-        <div class="feature-card"><span class="feature-icon">⌕</span><h2>Busca</h2><p>Encuentra títulos conocidos o descubre algo nuevo.</p></div>
+        <a asp-controller="Movies" asp-action="Index" class="feature-card feature-link">
+            <span class="feature-icon">⌕</span><h2>Busca</h2><p>Encuentra títulos conocidos o descubre algo nuevo.</p>
+        </a>
     </div>
     <div class="col-md-4">
-        <div class="feature-card"><span class="feature-icon">★</span><h2>Compara</h2><p>Revisa puntuaciones, fechas y sinopsis en un solo lugar.</p></div>
+        <a asp-controller="Movies" asp-action="Index" asp-route-query="Inception" class="feature-card feature-link">
+            <span class="feature-icon">★</span><h2>Compara</h2><p>Revisa puntuaciones, fechas y sinopsis en un solo lugar.</p>
+        </a>
     </div>
     <div class="col-md-4">
-        <div class="feature-card"><span class="feature-icon">▶</span><h2>Explora</h2><p>Abre los detalles de cada película para conocerla mejor.</p></div>
+        <a asp-controller="Movies" asp-action="Index" asp-route-query="Avatar" class="feature-card feature-link">
+            <span class="feature-icon">▶</span><h2>Explora</h2><p>Abre los detalles de cada película para conocerla mejor.</p>
+        </a>
     </div>
 </section>
-</div>
