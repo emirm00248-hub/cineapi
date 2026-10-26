@@ -1,0 +1,40 @@
+@model CineAPI.Models.MovieDetails
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<article class="details-card" style="@(Model.BackdropUrl is not null ? $"--backdrop: url('{Model.BackdropUrl}')" : string.Empty)">
+    <div class="details-overlay">
+        <a asp-action="Index" class="back-link">← Volver a resultados</a>
+        <div class="row align-items-end g-4 mt-3">
+            <div class="col-md-4 col-lg-3">
+                @if (Model.PosterUrl is not null)
+                {
+                    <img src="@Model.PosterUrl" alt="Póster de @Model.Title" class="details-poster" />
+                }
+                else
+                {
+                    <div class="details-poster poster-placeholder">Sin póster</div>
+                }
+            </div>
+            <div class="col-md-8 col-lg-9">
+                <span class="eyebrow">Detalles de la película</span>
+                <h1>@Model.Title</h1>
+                <p class="details-meta">@Model.DisplayReleaseDate <span>•</span> ★ @Model.VoteAverage.ToString("0.0") <span>•</span> @Model.RuntimeText</p>
+                @if (Model.Genres.Count > 0)
+                {
+                    <div class="genre-list">
+                        @foreach (var genre in Model.Genres)
+                        {
+                            <span class="badge rounded-pill">@genre</span>
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="details-overview mt-5">
+            <h2>Sinopsis</h2>
+            <p>@Model.Overview</p>
+        </div>
+    </div>
+</article>
